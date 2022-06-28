@@ -10,8 +10,7 @@ export class LoginComponent implements OnInit {
 
   loginForm = this.fb.group({
   mail:[''],
-  password:[''],
-  remember:[false]
+  password:['']
   })
 
   constructor(private fb: FormBuilder) { }

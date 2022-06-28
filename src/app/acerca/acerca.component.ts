@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { acercaDeInterface } from '../interfaces/acercaDe.interface';
+import { userInterface } from '../interfaces/user.interface';
+import { AcercaService } from '../services/acerca.service';
 
 @Component({
   selector: 'app-acerca',
@@ -7,9 +11,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcercaComponent implements OnInit {
 
-  constructor() { }
+
+ acercaDe! : acercaDeInterface;
+ usuario!:userInterface;
+
+
+
+
+  @Input()Id : number = 0;
+  @Input()edit:boolean = false;
+  constructor(private acercaS : AcercaService,private activated: ActivatedRoute) { }
+
+
 
   ngOnInit(): void {
+
+  this.acercaS.getUser(this.Id).subscribe((user) => {
+    this.usuario = user;
+
+  })
+
+  this.acercaS.getAcercaDe(this.Id).subscribe((data) => {
+    this.acercaDe = data;
+  })
+console.log(this.edit)
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

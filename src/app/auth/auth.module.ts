@@ -6,13 +6,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
     RegisterComponent,
     LoginComponent
   ],
   imports: [
-    CommonModule,ReactiveFormsModule
-  ]
+    CommonModule,ReactiveFormsModule,
+  ],
+  providers: []
 })
 export class AuthModule { }

@@ -8,9 +8,9 @@
 .root {
 	--bg: #dcdde1;
 	--color-icon:#F6E3C5;
-	--social-icon2: #e4405f;
-	--social-icon3: #3b5999;
-	--social-icon4: #0077B5;
+	--social-icon1: #e4405f;
+	--social-icon2: #3b5999;
+	--social-icon3: #0077B5;
 }
 * {
 	margin: 0;
@@ -27,6 +27,15 @@
 }
 .icon-item {
 	list-style: none;
+	&:nth-child(1) {
+		a {
+			&:hover {
+				&:before {
+					background: var(--social-icon1);
+				}
+			}
+		}
+	}
 	&:nth-child(2) {
 		a {
 			&:hover {
@@ -41,15 +50,6 @@
 			&:hover {
 				&:before {
 					background: var(--social-icon3);
-				}
-			}
-		}
-	}
-	&:nth-child(4) {
-		a {
-			&:hover {
-				&:before {
-					background: var(--social-icon4);
 				}
 			}
 		}

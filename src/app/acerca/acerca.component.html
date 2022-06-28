@@ -1,19 +1,23 @@
 <div class=" container-fluid banner">
-  <img src="assets\images\arrpz.jpg" alt="arrozal" >
+  <img *ngIf="acercaDe.banner != null else bannerBasico"
+   src={{acercaDe.banner}} alt="arrozal" >
+   <ng-template #bannerBasico><img  src="https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" alt=""></ng-template>
+
 </div>
 <div class="container">
-  <img class="photo" src="assets\images\eb.jpg" alt="" width="250" height="250">
+  <img class="photo"
+ *ngIf="acercaDe.photo != null else fotoBasica" src={{acercaDe.photo}} alt="" width="250" height="250">
+ <ng-template #fotoBasica><img class="photo" src="https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" alt="" width="250" height="250"></ng-template>
+
 </div>
 <div class=" container">
   <div class="row">
     <div class="col col-md-4 col-12 perfil">
-        <h3>Emmanuel Bassi</h3>
+        <h3>{{usuario.nombre}}</h3>
       </div>
     <div class="col col-md-8 col-12 info">
       <h3>Acerca de mi</h3>
-    <p>Disfruto de jugar al básquet,leer libros y jugar videojuegos. Me gusta estar informado de las nuevas tendencias tecnológicas.
-      Mi pasión por los negocios me llevó a estudiar Marketing donde aprendí a verlo como un estilo de vida.
-      En este momento estoy buscando nuevos desafíos en una empresa en la que pueda crecer. </p>
+    <p>{{acercaDe.descripcion}} </p>
   </div>
     </div>
 </div>
