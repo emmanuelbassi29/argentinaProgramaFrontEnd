@@ -1,9 +1,10 @@
 <div class="bodi">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin ">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin">
     <img style="border-radius:50%" class="mb-4" src="assets\images\malditaNaranja.jpg" alt="" width="270" height="257">
     <h1 class="h3 mb-3 fw-normal">Logueate maldita sea</h1>
 
     <div class="form-floating">
+      <p *ngIf="error">El usuario o contraseña es incorrecto</p>
       <input formControlName="mail" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Mail</label>
     </div>

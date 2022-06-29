@@ -34,21 +34,9 @@ export class AcercaComponent implements OnInit {
   this.acercaS.getAcercaDe(this.Id).subscribe((data) => {
     this.acercaDe = data;
   })
-console.log(this.edit)
-
-  }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+}
 }

@@ -5,11 +5,11 @@ import { RegisterComponent } from './auth/register/register.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/holis', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'holis/:id', component: MainComponent},
-  {path: 'holis/:id/edit', component: MainComponent, outlet: 'edit'},
+  {path: 'holis/:id/edit', component: MainComponent},
 ];
 
 @NgModule({

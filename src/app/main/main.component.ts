@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class MainComponent implements OnInit {
 
 Id: number = 0;
-edit: boolean = false;
+edit: boolean = true;
 ruta : string = '';
   constructor(private activated: ActivatedRoute) { }
 
@@ -21,9 +21,10 @@ ruta : string = '';
     )
     this.ruta = this.activated.snapshot.toString();
     if((this.ruta).includes("edit")){
-       this.edit = true;
+       this.edit = false;
+       console.log(this.edit)
     }
-
+   console.log(this.ruta)
   }
 
 }

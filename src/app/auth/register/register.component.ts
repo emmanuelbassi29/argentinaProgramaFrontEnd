@@ -35,7 +35,7 @@ newUSer(user: Object): void {
 
   this.service.addUser(user).subscribe(data => {
     console.log(data)
-    this.router.navigate(['/holis/' + data + '/edit']);
+    this.router.navigate(['/login']);
   })
 }
 
