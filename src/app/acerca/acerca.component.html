@@ -17,34 +17,11 @@
 <div class=" container">
   <div class="row">
     <div class="col col-md-4 col-12 perfil">
-        <h3>{{usuario.nombre}}
-          <button  class="btn-edit" (click)="open(content)><i class="fa-solid fa-pen-to-square fa-xl"></i></button></h3>
+        <h3>{{usuario.nombre}} <button  class="btn-edit"><i class="fa-solid fa-pen-to-square fa-xl"></i></button></h3>
       </div>
-
     <div class="col col-md-8 col-12 info">
       <h3>Acerca de mi</h3>
     <p>{{acercaDe.descripcion}} </p>
   </div>
     </div>
 </div>
-
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="mb-3">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
-</ng-template>

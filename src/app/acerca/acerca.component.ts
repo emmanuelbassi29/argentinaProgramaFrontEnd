@@ -34,5 +34,7 @@ export class AcercaComponent implements OnInit {
 
 
 
+
 }
+
 }
