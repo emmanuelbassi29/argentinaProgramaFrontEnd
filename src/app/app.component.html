@@ -1,11 +1,9 @@
 
-<app-header
-[edit]="edit"
-></app-header>
+<app-header [editar]="editar"></app-header>
 <app-main
 *ngIf="Id > 0"
 ></app-main>
-<router-outlet></router-outlet>
+<router-outlet ></router-outlet>
 
 
 

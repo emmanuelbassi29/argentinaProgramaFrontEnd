@@ -10,7 +10,7 @@ import { logInInterface } from '../interfaces/logIn.inteface';
 export class LogInService {
 
   constructor(private http: HttpClient) { }
-Id: number = 0;
+edit!: boolean;
 
 
   getUser(info: logInInterface): Observable<number>{
@@ -19,9 +19,12 @@ Id: number = 0;
   return  this.http.get<number>
     (`http://localhost:8080/check/${info.mail}/${info.password}`)
 
-
-
-
-
    }
-}
+
+   getEdit(): boolean {
+    return this.edit;
+  }
+
+  }
+
+

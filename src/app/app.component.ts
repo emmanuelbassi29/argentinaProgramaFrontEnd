@@ -1,4 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MainComponent } from './main/main.component';
 
 
@@ -9,17 +10,24 @@ import { MainComponent } from './main/main.component';
 })
 export class AppComponent {
   Id: number = 0;
-  edit : boolean = true;
-
+  ruta : string = '';
+  editar! : boolean;
   @ViewChild(MainComponent) main! : MainComponent;
 
-  constructor() { }
+  constructor(private activated: ActivatedRoute) { }
+
+  AfterContentInit(): void {
+    this.ruta = this.activated.pathFromRoot.toString();
+    if((this.ruta).includes("edit")){
+       this.editar = false;
+       console.log(this.editar)
+    }
+  }
 
 
 
   ngAfterViewInit() {
     this.Id = this.main.Id;
-    this.edit = this.main.edit;
   }
 
 }

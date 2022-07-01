@@ -31,6 +31,7 @@ console.log(this.loginForm)
 
       if (id != 0){
       this.router.navigate(['/holis/' + id + '/edit']);
+
       }
       else {
         this.error = true;

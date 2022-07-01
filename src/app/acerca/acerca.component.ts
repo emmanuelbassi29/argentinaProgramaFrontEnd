@@ -11,24 +11,20 @@ import { AcercaService } from '../services/acerca.service';
 })
 export class AcercaComponent implements OnInit {
 
+  closeResult = '';
 
  acercaDe! : acercaDeInterface;
  usuario!:userInterface;
 
-
-
-
   @Input()Id : number = 0;
-  @Input()edit:boolean = false;
+  @Input()edit!:boolean;
+
   constructor(private acercaS : AcercaService,private activated: ActivatedRoute) { }
-
-
 
   ngOnInit(): void {
 
   this.acercaS.getUser(this.Id).subscribe((user) => {
     this.usuario = user;
-
   })
 
   this.acercaS.getAcercaDe(this.Id).subscribe((data) => {

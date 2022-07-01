@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LogInService } from '../services/log-in.service';
 
 @Component({
@@ -9,11 +9,18 @@ import { LogInService } from '../services/log-in.service';
 })
 export class HeaderComponent implements OnInit {
 
+  ruta: string='';
+  @Input()editar!:boolean;
+  constructor(private activated: ActivatedRoute, private log : LogInService, private router: Router){}
 
-  @Input()edit:boolean = true;
-  constructor(private activated: ActivatedRoute, private log : LogInService){}
-  Id: number = this.log.Id;
   ngOnInit(): void {
 
+
   }
+
+logOut(): void {
+
+  this.editar = true;
+  this.router.navigate(['/login']);
+}
 }
