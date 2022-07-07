@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 registerForm = this.fb.group({
 nombre: ['', Validators.required],
-
+profesion: ['', Validators.required],
 mail:[''],
 password: ['']
 })

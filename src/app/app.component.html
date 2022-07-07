@@ -1,9 +1,29 @@
 
-<app-header [editar]="editar"></app-header>
-<app-main
-*ngIf="Id > 0"
-></app-main>
+<app-header></app-header>
+<div *ngIf="editar">
+<app-acerca
+[editar]="editar"
+  [Id]="Id">
+</app-acerca>
+<app-experiencia>
+  [Id]="Id"
+  [editar]="editar">
+</app-experiencia>
+<app-educacion>
+  [Id]="Id"
+  [editar]="editar">
+</app-educacion>
+<app-skills>
+  [Id]="Id"
+  [editar]="editar">
+</app-skills>
+<app-proyectos>
+  [Id]="Id"
+  [editar]="editar">
+</app-proyectos>
+</div>
+<div *ngIf="!editar">
 <router-outlet ></router-outlet>
-
+</div>
 
 

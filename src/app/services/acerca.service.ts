@@ -10,23 +10,31 @@ import { LogInService } from './log-in.service';
 })
 export class AcercaService {
 
+  base: string = 'http://localhost:8080'
 
 
   constructor(private http: HttpClient, private log : LogInService) { }
 
   getUser(id : number): Observable<userInterface>{
 
-
     return  this.http.get<userInterface>
-      (`http://localhost:8080/holis/${id}`)
+      (this.base +`/holis/${id}`)
 
      }
 
 
   getAcercaDe(id: number): Observable<acercaDeInterface>{
 
-    return this.http.get<acercaDeInterface>(`http://localhost:8080/descripcion/${id}`)
+    return this.http.get<acercaDeInterface>(this.base +`/acercaDe/${id}`)
 
   }
 
+  editarUser(id: number,newUser: userInterface): Observable<userInterface>{
+
+    return this.http.put<userInterface>(this.base + `/editar/user/${id}`,newUser)
+  }
+
+  editarAcercaDe(id: number,newAcerca: acercaDeInterface): Observable<acercaDeInterface>{
+    return this.http.put<acercaDeInterface>(this.base + `/editar/acercaDe/${id}`,newAcerca)
+  }
 }

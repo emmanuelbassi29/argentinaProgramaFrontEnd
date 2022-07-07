@@ -32,3 +32,156 @@
     </div>
   </div>
   </div>
+
+
+<!--new modal-->
+<div
+class="modal fade"
+id="newModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Datos del puesto</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form class="form-signin" [formGroup]="newForm" (ngSubmit)="newSubmit()">
+        <div class="form-floating">
+      <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa" >
+      <label for="floatingInput">Foto de la empresa</label>
+    </div>
+    <div class="form-floating">
+      <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo">
+      <label for="floatingInput">Puesto de trabajo</label>
+    </div>
+    <div class="form-floating">
+      <input formControlName="fechaI"  type="text" class="form-control" >
+      <label for="floatingInput">Fecha Inicio</label>
+    </div>
+    <div class="form-floating">
+      <input formControlName="fechaF"  type="text" class="form-control" >
+      <label for="floatingPassword">Fecha de finalización</label>
+    </div>
+    <div class="form-floating">
+      <input formControlName="descripcion"  type="text" class="form-control">
+      <label for="floatingInput">Tareas realizadas</label>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Close
+      </button>
+      <button type="submit" class="btn btn-primary">
+        Save changes
+      </button>
+    </div>
+  </form>
+
+  </div>
+  </div>
+</div>
+</div>
+
+<!--Edit modal-->
+<div
+class="modal fade"
+id="editModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Editar puesto</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form class="form-signin" [formGroup]="editForm" (ngSubmit)="editSubmit()">
+      <div class="form-floating">
+    <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa" [(value)]="editData.imagen" >
+    <label for="floatingInput">Foto de la empresa</label>
+  </div>
+  <div class="form-floating">
+    <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo" [(value)]="editData.titulo">
+    <label for="floatingInput">Puesto de trabajo</label>
+  </div>
+  <div class="form-floating">
+    <input formControlName="fechaI"  type="text" class="form-control" [(value)]="editData.fechaI">
+    <label for="floatingInput">Fecha Inicio</label>
+  </div>
+  <div class="form-floating">
+    <input formControlName="fechaF"  type="text" class="form-control" [(value)]="editData.fechaF">
+    <label for="floatingPassword">Fecha de finalización</label>
+  </div>
+  <div class="form-floating">
+    <input formControlName="descripcion"  type="text" class="form-control" [(value)]="editData.descripcion">
+    <label for="floatingInput">Tareas realizadas</label>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      Close
+    </button>
+    <button type="submit" class="btn btn-primary">
+      Save changes
+    </button>
+  </div>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!--delete modal-->
+<div
+class="modal fade"
+id="deleteModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Datos de Usuario</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form class="form-signin" [formGroup]="deleteForm" (ngSubmit)="deleteSubmit()">
+
+        <p>Estas seguro de borrar este puesto de trabajo</p>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Close
+      </button>
+      <button type="submit" class="btn btn-primary">
+        Save changes
+      </button>
+    </div>
+  </form>
+
+  </div>
+  </div>
+</div>
+</div>

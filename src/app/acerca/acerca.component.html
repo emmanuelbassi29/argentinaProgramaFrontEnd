@@ -1,9 +1,13 @@
-<div class=" container-fluid banner">
+<div class=" container banner">
+
   <img *ngIf="acercaDe.banner != null else bannerBasico"
-   src={{acercaDe.banner}} alt="arrozal" >
-   <ng-template #bannerBasico><img
-    src="https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
-    alt=""></ng-template>
+   src={{acercaDe.banner}} alt="arrozal">
+   <ng-template #bannerBasico>
+    <img src="https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
+    alt="">
+  </ng-template>
+  <button *ngIf="editar" class="btn-edit" type="button" (click)="openAcercaDeModal()"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button>
+
 </div>
 
 <div class="container">
@@ -11,17 +15,128 @@
  *ngIf="acercaDe.photo != null else fotoBasica" src={{acercaDe.photo}} alt="" width="250" height="250">
  <ng-template #fotoBasica><img class="photo"
   src="https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg"
-  alt="" width="250" height="250"></ng-template>
+  alt="" width="250" height="250">
+</ng-template>
+<button *ngIf="editar" class="btn-edit" type="button" (click)="openAcercaDeModal()"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button>
+
 </div>
 
 <div class=" container">
   <div class="row">
     <div class="col col-md-4 col-12 perfil">
-        <h3>{{usuario.nombre}} <button  class="btn-edit"><i class="fa-solid fa-pen-to-square fa-xl"></i></button></h3>
+        <h3>{{usuario.nombre}} <button class="btn-edit" type="button" (click)="openFormModal()"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button></h3>
+
       </div>
     <div class="col col-md-8 col-12 info">
-      <h3>Acerca de mi</h3>
+      <h3>Acerca de mi <button *ngIf="editar" class="btn-edit" type="button" (click)="openAcercaDeModal()"><i  class="fa-solid fa-pen-to-square fa-l"></i></button>
+      </h3>
     <p>{{acercaDe.descripcion}} </p>
   </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <h5>{{usuario.profesion}}</h5>
+      </div>
+    </div>
+</div>
+
+<!--form modal-->
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos de Usuario</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <div class="form-floating">
+        <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre y apellido">
+        <label for="floatingInput">Nombre</label>
+      </div>
+      <div class="form-floating">
+        <input formControlName="profesion" type="text" class="form-control" placeholder="profesion">
+        <label for="floatingInput">Profesion</label>
+      </div>
+      <div class="form-floating">
+        <input formControlName="mail"  type="email" class="form-control"  placeholder="name@example.com">
+        <label for="floatingInput">Mail</label>
+      </div>
+      <div class="form-floating">
+        <input formControlName="password"  type="password" class="form-control"  placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary">
+          Save changes
+        </button>
+      </div>
+    </form>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Perfil modal -->
+<div
+  class="modal fade"
+  id="acercaDeModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos de perfil</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin" [formGroup]="acercaDeForm" (ngSubmit)="acercaDeSubmit()">
+          <div class="form-floating">
+        <input formControlName="banner" type="text" class="form-control" placeholder="">
+        <label for="floatingInput">Url de la foto de tu banner</label>
+      </div>
+      <div class="form-floating">
+        <input formControlName="photo" type="text" class="form-control" placeholder="">
+        <label for="floatingInput">Url de tu foto de perfil</label>
+      </div>
+      <div class="form-floating">
+        <textarea formControlName="descripcion"  type="text" class="form-control"  placeholder="Ingreso de descripcion"></textarea>
+        <label for="floatingInput">Descripcion</label>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary">
+          Save changes
+        </button>
+      </div>
+    </form>
+
+    </div>
+    </div>
+  </div>
 </div>

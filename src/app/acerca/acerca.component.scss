@@ -4,9 +4,9 @@
 .banner img {
   width: 100%;
   height: 65%;
- padding: 0% 5%;
  border-bottom-right-radius: 6%;
  border-bottom-left-radius: 6% ;
+ object-fit: cover;
 }
 .photo {
   border-radius: 50%;
@@ -16,10 +16,11 @@
 .btn-edit{
   height:0px;
   width:0px;
-  padding: 0px;
+  margin: 10px;
   border: 0px;
-
 }
+
+
 
 .perfil{
   margin-top: 5%;
