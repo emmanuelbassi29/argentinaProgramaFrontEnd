@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { educacionInterface } from '../interfaces/educacion.interface';
+import { EducacionService } from '../services/educacion.service';
 declare var window: any;
 
 @Component({
@@ -10,11 +11,11 @@ declare var window: any;
 })
 export class EducacionComponent implements OnInit {
 
-newModal: any;
-editModal:any;
-deleteModal:any;
+newEduModal: any;
+editEduModal:any;
+deleteEduModal:any;
 
-newForm = this.fb.group({
+newEduForm = this.fb.group({
   imagen: [''],
   titulo: [''],
   fechaI: [''],
@@ -22,7 +23,7 @@ newForm = this.fb.group({
   descripcion: ['']
 })
 
-editForm = this.fb.group({
+editEduForm = this.fb.group({
   imagen: [''],
   titulo: [''],
   fechaI: [''],
@@ -30,7 +31,7 @@ editForm = this.fb.group({
   descripcion: ['']
 })
 
-deleteForm = this.fb.group({})
+deleteEduForm = this.fb.group({})
 
 editData:any = {
   imagen: '',
@@ -44,17 +45,54 @@ editar:boolean = (localStorage.getItem('editar') === 'true');
 educacion: educacionInterface[] = [];
 editId: number = 0;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private EduSer : EducacionService) { }
 
   ngOnInit(): void {
-    this.newModal = new window.bootstrap.Modal(
-      document.getElementById('newModal'));
 
-  this.editModal = new window.bootstrap.Modal(
-    document.getElementById('editModal'))
+    this.EduSer.getEdu(this.Id).subscribe(data => {
+      this.educacion = data;
+    })
 
-  this.deleteModal = new window.bootstrap.Modal(
-    document.getElementById('deleteModal'))
+
+    this.newEduModal = new window.bootstrap.Modal(
+      document.getElementById('newEduModal'));
+
+  this.editEduModal = new window.bootstrap.Modal(
+    document.getElementById('editEduModal'))
+
+  this.deleteEduModal = new window.bootstrap.Modal(
+    document.getElementById('deleteEduModal'))
   }
 
+  openNewEdu() {
+    this.newEduModal.show();
+  }
+
+  newEdu(){
+
+    this.EduSer.addEdu(this.Id,this.newEduForm.value).subscribe(data=>{});
+   this.newEduModal.hide();
+  }
+
+  openEditEdu(edu : any){
+    this.editEduModal.show();
+    this.editId = edu.id
+    console.log(this.editId)
+  }
+
+  editEdu(){
+
+    this.EduSer.editEdu(this.editId,this.newEduForm.value).subscribe(data=>{});
+
+  }
+
+  openDeleteEdu(edu : any){
+    this.editId = edu.id;
+    this.deleteEduModal.show();
+  }
+
+  deleteEdu(){
+    this.EduSer.deleteEdu(this.editId).subscribe(data=>{})
+    this.deleteEduModal.hide();
+  }
 }

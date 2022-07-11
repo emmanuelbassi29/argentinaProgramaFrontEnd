@@ -2,7 +2,6 @@ import { experienciaInterface } from './../interfaces/experiencia.interface';
 import { Component, Input, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ExperienciaService } from '../services/experiencia.service';
-import { ActivatedRoute, Params } from '@angular/router';
 import { timer } from 'rxjs';
 declare var window: any;
 

@@ -1,10 +1,14 @@
 
 <div class="container-fluid">
-<h3>Habilidades</h3>
-  <div class="row">
-    <div class="col col-lg-3">
-      <h5>Viajar</h5>
-<div class="pie animate" style="--p:90;--c:lightgreen">90%</div>
+<h3 class="inline">Habilidades</h3>
+<button class="btn-edit-light inline" type="button"  (click)="openskillsNew()"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
+  <div class="row" >
+    <div class="col col-lg-3" *ngFor="let skill of skills ">
+      <h5>{{skill.titulo}}</h5>
+
+        <button  class="btn-edit-light" type="button" (click)="openSkillsDelete(skill)">
+          <i class="fa-solid fa-circle-xmark"></i></button>
+<div class="pie animate" style="--p:90;--c:lightgreen">{{skill.nivel}}</div>
 </div>
 <div class="col col-lg-3">
   <h5>Ingles</h5>
@@ -20,4 +24,98 @@
       </div>
     </div>
 
+</div>
+
+<!--new modal-->
+<div
+  class="modal fade"
+  id="newSkillModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos del puesto</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin" [formGroup]="newSkillForm" (ngSubmit)="newSkillSubmit()">
+          <div class="form-floating">
+        <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa" >
+        <label for="floatingInput">Foto de la empresa</label>
+      </div>
+      <div class="form-floating">
+        <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo">
+        <label for="floatingInput">Puesto de trabajo</label>
+      </div>
+      <div class="form-floating">
+        <input formControlName="fechaI"  type="text" class="form-control" >
+        <label for="floatingInput">Fecha Inicio</label>
+      </div>
+      <div class="form-floating">
+        <input formControlName="fechaF"  type="text" class="form-control" >
+        <label for="floatingPassword">Fecha de finalización</label>
+      </div>
+      <div class="form-floating">
+        <input formControlName="descripcion"  type="text" class="form-control">
+        <label for="floatingInput">Tareas realizadas</label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary">
+          Save changes
+        </button>
+      </div>
+    </form>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<!--delete modal-->
+<div
+  class="modal fade"
+  id="deleteSkillModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos de Usuario</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+
+          <p>Estas seguro de borrar este puesto de trabajo</p>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary" (click)="deleteSkillSubmit()">
+          Save changes
+        </button>
+      </div>
+
+    </div>
+    </div>
+  </div>
 </div>

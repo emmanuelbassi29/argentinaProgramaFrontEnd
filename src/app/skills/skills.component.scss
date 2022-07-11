@@ -68,3 +68,17 @@ width: 125px;
 @keyframes p {
   from{--p:0}
 }
+
+.inline {
+  display: inline-flex;
+
+  }
+.btn-edit-light{
+
+      background-color: #1B2430;
+      height:0px;
+      width:0px;
+      margin:15px;
+      border: 0px;
+      color: #ffff
+  }

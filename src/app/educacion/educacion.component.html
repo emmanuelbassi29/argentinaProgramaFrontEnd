@@ -1,21 +1,22 @@
 <div class="educacion container ">
   <div class="row">
   <div class="col">
-  <h3>Educacion</h3>
+  <h3 class="inline">Educacion</h3>
+  <button *ngIf="editar" class="btn-edit inline" type="button" (click)="openNewEdu()"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
   </div>
   </div>
 
-  <div class="row">
+  <div *ngFor="let edu of educacion" class="row">
 
     <div class="col col-md-2">
-   <img class="estudio" src="assets\images\santander-group.jpg" alt="">
+   <img class="estudio" src={{edu.imagen}} alt="Imagen del instituto">
     </div>
    <div class="col col-md-10">
-   <h5>Representate de atencion al publico</h5>
-   <p>Estuve cubriendo una licencia de maternidad, mi rol principal era
-    ayudar a las personas a cumplir sus objetivos financieros en base
-    a sus recursos. Así También como atraer nuevos clientes y
-    mejorar la experiencia de los clientes con el banco.  </p>
+   <h5 class="inline">{{edu.titulo}}</h5>
+   <button *ngIf="editar" class="btn-edit inline" type="button" (click)="openEditEdu(edu)"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button>
+   <button *ngIf="editar" class="btn-edit inline" type="button" (click)="openDeleteEdu(edu)"><i class="fa-solid fa-circle-xmark"></i></button>
+   <h6>{{edu.fechaI}} - {{edu.fechaF}}</h6>
+   <p>{{edu.descripcion}}</p>
     </div>
   </div>
   <div class="row">
@@ -37,7 +38,7 @@
 <!--new modal-->
 <div
 class="modal fade"
-id="newModal"
+id="newEduModal"
 tabindex="-1"
 aria-labelledby="exampleModalLabel"
 aria-hidden="true"
@@ -54,14 +55,14 @@ aria-hidden="true"
       ></button>
     </div>
     <div class="modal-body">
-      <form class="form-signin" [formGroup]="newForm" (ngSubmit)="newSubmit()">
+      <form class="form-signin" [formGroup]="newEduForm" (ngSubmit)="newEdu()">
         <div class="form-floating">
-      <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa" >
-      <label for="floatingInput">Foto de la empresa</label>
+      <input formControlName="imagen" type="text" class="form-control" placeholder="Foto del instituto" >
+      <label for="floatingInput">Foto del instituto</label>
     </div>
     <div class="form-floating">
-      <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo">
-      <label for="floatingInput">Puesto de trabajo</label>
+      <input formControlName="titulo" type="text" class="form-control" placeholder="Titulo recibido">
+      <label for="floatingInput">Titulo recibido</label>
     </div>
     <div class="form-floating">
       <input formControlName="fechaI"  type="text" class="form-control" >
@@ -93,7 +94,7 @@ aria-hidden="true"
 <!--Edit modal-->
 <div
 class="modal fade"
-id="editModal"
+id="editEduModal"
 tabindex="-1"
 aria-labelledby="exampleModalLabel"
 aria-hidden="true"
@@ -110,7 +111,7 @@ aria-hidden="true"
     ></button>
   </div>
   <div class="modal-body">
-    <form class="form-signin" [formGroup]="editForm" (ngSubmit)="editSubmit()">
+    <form class="form-signin" [formGroup]="editEduForm" (ngSubmit)="editEdu()">
       <div class="form-floating">
     <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa" [(value)]="editData.imagen" >
     <label for="floatingInput">Foto de la empresa</label>
@@ -150,7 +151,7 @@ aria-hidden="true"
 <!--delete modal-->
 <div
 class="modal fade"
-id="deleteModal"
+id="deleteEduModal"
 tabindex="-1"
 aria-labelledby="exampleModalLabel"
 aria-hidden="true"
@@ -167,7 +168,7 @@ aria-hidden="true"
       ></button>
     </div>
     <div class="modal-body">
-      <form class="form-signin" [formGroup]="deleteForm" (ngSubmit)="deleteSubmit()">
+      <form class="form-signin" [formGroup]="deleteEduForm" (ngSubmit)="deleteEdu()">
 
         <p>Estas seguro de borrar este puesto de trabajo</p>
 
