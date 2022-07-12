@@ -16,8 +16,8 @@ export class AcercaComponent implements OnInit {
 
  acercaDe! : acercaDeInterface;
  usuario!:userInterface;
- @Input()Id : number = 0;
- @Input()editar!:boolean;
+ Id : number = Number(localStorage.getItem('id'));
+ editar:boolean = (localStorage.getItem('editar') == 'edit');
  formModal: any;
  acercaDeModal:any;
 

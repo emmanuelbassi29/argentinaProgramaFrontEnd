@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   password:['']
   })
   Id : number = 0;
-
+  edit: string = "";
 
 
   error : boolean = false;
@@ -30,12 +30,17 @@ console.log(this.loginForm)
     this.log.getUser(this.loginForm.value).subscribe(id => {
 
       if (id != 0){
-      this.router.navigate(['/holis/' + id + '/edit']);
+      this.Id = id;
+      this.edit = "edit"
+      localStorage.setItem("id",this.Id.toString())
+      localStorage.setItem("editar",this.edit)
+      this.router.navigate(['/holis/' + id + '/' + this.edit]);
 
-      }
+    }
       else {
         this.error = true;
       }
+
     })
   }
 }

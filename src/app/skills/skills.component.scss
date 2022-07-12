@@ -1,6 +1,12 @@
+@property --p{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
 .container-fluid {
   background-color: #1B2430;
-  color: #FFFFFF;
+  color: #fff;
   padding: 3% 5% 8% 3%;
   text-align: center;
 }
@@ -8,23 +14,21 @@
  padding-bottom: 40px;
 
 }
-h5 {
+h4 {
   padding-bottom:5%;
 }
 
-@property --p{
-  syntax: '<number>';
-  inherits: true;
-  initial-value: 0;
-}
+
 input {
 width: 125px;
 }
 
+
+
 .pie {
   --p:20;
   --b:22px;
-  --c:darkred;
+  --c:lightgreen;
   --w:180px;
 
   width:var(--w);
@@ -82,3 +86,6 @@ width: 125px;
       border: 0px;
       color: #ffff
   }
+  input.form-control{
+    width: 100%;
+    }

@@ -9,18 +9,16 @@ import { LogInService } from '../services/log-in.service';
 })
 export class HeaderComponent implements OnInit {
 
-  ruta: string='';
-  @Input()editar!:boolean;
   constructor(private activated: ActivatedRoute, private log : LogInService, private router: Router){}
+  editar:boolean = (localStorage.getItem('editar') == 'edit');
 
   ngOnInit(): void {
-
-
-  }
+this.ngOnInit();
+}
 
 logOut(): void {
-
-  this.editar = true;
+  localStorage.clear();
+  this.editar = false;
   this.router.navigate(['/login']);
 }
 }

@@ -12,18 +12,18 @@
 
         <li class="icon-item">
 
-          <button *ngIf="!editar" type="button" class="edit-btn"><i class="fa-solid fa-pen-to-square fa-xl"></i></button>
+          <button *ngIf="editar" type="button" class="edit-btn"><i class="fa-solid fa-pen-to-square fa-xl"></i></button>
           <a href="#" class="icon-link"><i class="fab fa-instagram"></i></a>
         </li>
         <li class="icon-item">
-          <a href="#" class="icon-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="icon-link"><i class="fa-brands fa-github"></i></a>
         </li>
         <li class="icon-item">
           <a href="#" class="icon-link"><i class="fab fa-linkedin-in"></i></a>
         </li>
         <a  class="btn" routerLink="/login"
-         *ngIf="editar else logout ">Login</a>
-        <ng-template #logout><a class="btn" (click)= "logOut()">LogOut</a></ng-template>
+         *ngIf="editar else logIn" (click)="logOut()">LogOut</a>
+        <ng-template #logIn><a class="btn" >LogIn</a></ng-template>
       </ul>
 
   </div>

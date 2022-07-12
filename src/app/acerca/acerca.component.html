@@ -7,9 +7,7 @@
     alt="">
   </ng-template>
   <button *ngIf="editar" class="btn-edit" type="button" (click)="openAcercaDeModal()"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button>
-
 </div>
-
 <div class="container">
   <img class="photo"
  *ngIf="acercaDe.photo != null else fotoBasica" src={{acercaDe.photo}} alt="" width="250" height="250">
@@ -25,6 +23,7 @@
   <div class="row">
     <div class="col col-md-4 col-12 perfil">
         <h3>{{usuario.nombre}} <button class="btn-edit" type="button" (click)="openFormModal()"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button></h3>
+        <h5>{{usuario.profesion}}</h5>
 
       </div>
     <div class="col col-md-8 col-12 info">
@@ -33,11 +32,7 @@
     <p>{{acercaDe.descripcion}} </p>
   </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <h5>{{usuario.profesion}}</h5>
-      </div>
-    </div>
+
 </div>
 
 <!--form modal-->

@@ -1,5 +1,5 @@
 export interface skillsInterface {
-     titulo : string
+     titulo : string,
      nivel : number
 
 }

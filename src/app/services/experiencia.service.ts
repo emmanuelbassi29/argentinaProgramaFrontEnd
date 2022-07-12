@@ -13,9 +13,9 @@ export class ExperienciaService {
 
   constructor(private http: HttpClient) { }
 
-  addExp(id: number,exp:experienciaInterface):Observable<experienciaInterface> {
+  addExp(id: number,exp:experienciaInterface):Observable<experienciaInterface[]> {
 
-    return this.http.post<experienciaInterface>(this.url + `new/${id}`,exp)
+    return this.http.post<experienciaInterface[]>(this.url + `new/${id}`,exp)
 
   }
 
@@ -25,9 +25,9 @@ export class ExperienciaService {
 
   }
 
-  editExp(id: number,exp:experienciaInterface):Observable<experienciaInterface>{
+  editExp(id: number,exp:experienciaInterface):Observable<experienciaInterface[]>{
 
-    return this.http.put<experienciaInterface>(this.url + `edit/${id}`,exp)
+    return this.http.put<experienciaInterface[]>(this.url + `edit/${id}`,exp)
   }
 
   deleteExp(id: number):Observable<experienciaInterface> {

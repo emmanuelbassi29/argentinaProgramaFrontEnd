@@ -1,22 +1,28 @@
 
 
   <div class="container section">
-      <div class="carousel">
-          <input type="radio" name="slides" checked="checked" id="slide-1">
+    <h3 class="inline">Proyectos</h3>
+ <button class="btn-edit inline" type="button"  (click)="openNewProyecto()"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
+      <div class="carousel"  >
+
+          <input *ngFor="let proyecto of proyectos, let i = index" type="radio" name="slides" checked="checked" id={{i}}>
           <input type="radio" name="slides" id="slide-2">
           <input type="radio" name="slides" id="slide-3">
           <input type="radio" name="slides" id="slide-4">
           <input type="radio" name="slides" id="slide-5">
           <input type="radio" name="slides" id="slide-6">
+
           <ul class="carousel__slides">
-              <li class="carousel__slide">
+              <li class="carousel__slide" *ngFor="let proyecto of proyectos" >
                   <figure>
                       <div>
-                          <img src="https://picsum.photos/id/1041/800/450" alt="">
+                          <img src={{proyecto.imagen}} alt="">
+
                       </div>
+                      <button *ngIf="editar" class="btn-edit inline" type="button" (click)="openEditProyecto(proyecto)"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button>                       <button *ngIf="editar" class="btn-edit inline" type="button" (click)="openDeleteProyecto(proyecto)"><i class="fa-solid fa-circle-xmark"></i></button>
                       <figcaption>
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                          <span class="credit">Photo: Tim Marshall</span>
+                          {{proyecto.descripcion}}
+                          <span class="credit">{{proyecto.titulo}}</span>
                       </figcaption>
                   </figure>
               </li>
@@ -24,9 +30,14 @@
                   <figure>
                       <div>
                           <img src="https://picsum.photos/id/1043/800/450" alt="">
+
                       </div>
+                      <button  class="btn-edit inline" type="button" ><i  class="fa-solid fa-pen-to-square fa-xl"></i></button>
+                      <button  class="btn-edit inline" type="button" ><i class="fa-solid fa-circle-xmark"></i></button>
                       <figcaption>
+
                           Lorem ipsum dolor sit amet consectetur adipisicing elit.
+
                           <span class="credit">Photo: Christian Joudrey</span>
                       </figcaption>
                   </figure>
@@ -76,9 +87,9 @@
                   </figure>
               </li>
           </ul>
-          <ul class="carousel__thumbnails">
-              <li>
-                  <label for="slide-1"><img src="https://picsum.photos/id/1041/150/150" alt=""></label>
+          <ul class="carousel__thumbnails" >
+              <li *ngFor="let proyecto of proyectos, let i = index">
+                  <label for={{i}}><img src={{proyecto.imagen}} alt=""></label>
               </li>
               <li>
                   <label for="slide-2"><img src="https://picsum.photos/id/1043/150/150" alt=""></label>
@@ -99,3 +110,147 @@
       </div>
   </div>
 
+<!--new modal-->
+<div
+class="modal fade"
+id="newProyectoModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Datos del proyecto</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form class="form-signin" [formGroup]="newProyectoForm" (ngSubmit)="newProyecto()">
+        <div class="form-floating">
+      <input formControlName="titulo" type="text" class="form-control" placeholder="Titulo del proyecto" >
+      <label for="floatingInput">Titulo del proyecto</label>
+    </div>
+    <div class="form-floating">
+      <input formControlName="imagen" type="text" class="form-control" placeholder="Titulo recibido">
+      <label for="floatingInput">Imagen del proyecto</label>
+    </div>
+    <div class="form-floating">
+      <input formControlName="descripcion"  type="text" class="form-control" >
+      <label for="floatingInput">Descripcion del proyecto</label>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Close
+      </button>
+      <button type="submit" class="btn btn-primary">
+        Save changes
+      </button>
+    </div>
+  </form>
+
+  </div>
+  </div>
+</div>
+</div>
+
+<!--Edit modal-->
+<div
+class="modal fade"
+id="editProyectoModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Editar proyecto</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form class="form-signin" [formGroup]="newProyectoForm" (ngSubmit)="editProyecto()">
+      <div class="form-floating">
+    <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa" >
+    <label for="floatingInput">Foto de la empresa</label>
+  </div>
+  <div class="form-floating">
+    <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo" >
+    <label for="floatingInput">Puesto de trabajo</label>
+  </div>
+  <div class="form-floating">
+    <input formControlName="fechaI"  type="text" class="form-control" >
+    <label for="floatingInput">Fecha Inicio</label>
+  </div>
+  <div class="form-floating">
+    <input formControlName="fechaF"  type="text" class="form-control" >
+    <label for="floatingPassword">Fecha de finalización</label>
+  </div>
+  <div class="form-floating">
+    <input formControlName="descripcion"  type="text" class="form-control" >
+    <label for="floatingInput">Tareas realizadas</label>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      Close
+    </button>
+    <button type="submit" class="btn btn-primary">
+      Save changes
+    </button>
+  </div>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!--delete modal-->
+<div
+class="modal fade"
+id="deleteProyectoModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Borrar proyecto</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form class="form-signin" [formGroup]="newProyectoForm" (ngSubmit)="deleteProyecto()">
+
+        <p>Estas seguro de borrar este puesto de trabajo</p>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Close
+      </button>
+      <button type="submit" class="btn btn-primary">
+        Save changes
+      </button>
+    </div>
+  </form>
+
+  </div>
+  </div>
+</div>
+</div>

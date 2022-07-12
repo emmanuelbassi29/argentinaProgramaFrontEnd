@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ProyectoService } from '../services/proyecto.service';
+declare var window: any;
 
 @Component({
   selector: 'app-proyectos',
@@ -7,9 +10,73 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProyectosComponent implements OnInit {
 
-  constructor() { }
+  newProyectoModal:any;
+  editProyectoModal:any;
+  deleteProyectoModal:any;
+
+  Id : number = Number(localStorage.getItem('id'));
+  editar:boolean = (localStorage.getItem('editar') == 'edit');
+  proyectos: any[] = [];
+  editId: number = 0;
+
+  newProyectoForm = this.fb.group({
+    titulo: [''],
+    imagen: [''],
+    descripcion: ['']
+
+  })
+  constructor(private fb: FormBuilder,private proService: ProyectoService) { }
 
   ngOnInit(): void {
+
+    this.proService.showProyecto(this.Id).subscribe(data =>{
+    this.proyectos = data;
+
+    this.newProyectoModal = new window.bootstrap.Modal(
+      document.getElementById('newProyectoModal'));
+
+  this.editProyectoModal = new window.bootstrap.Modal(
+    document.getElementById('editProyectoModal'))
+
+  this.deleteProyectoModal = new window.bootstrap.Modal(
+    document.getElementById('deleteProyectoModal'))
+
+    })
+
+  }
+  openNewProyecto() {
+    this.newProyectoModal.show();
   }
 
+  newProyecto(){
+
+    this.proService.addProyecto(this.Id,this.newProyectoForm.value).subscribe(data=>{
+      this.proyectos = data;
+    });
+   this.newProyectoModal.hide();
+  }
+
+  openEditProyecto(pro : any){
+    this.editProyectoModal.show();
+    this.editId = pro.id
+    console.log(this.editId)
+  }
+
+  editProyecto(){
+
+    this.proService.editProyecto(this.editId,this.newProyectoForm.value).subscribe(data=>{
+      this.proyectos = data;
+    });
+
+  }
+
+  openDeleteProyecto(pro : any){
+    this.editId = pro.id;
+    this.deleteProyectoModal.show();
+  }
+
+  deleteProyecto(){
+    this.proService.deleteProyecto(this.editId).subscribe(data=>{})
+    this.deleteProyectoModal.hide();
+  }
 }

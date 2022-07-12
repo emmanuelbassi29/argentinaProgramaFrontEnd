@@ -16,14 +16,14 @@ export class EducacionService {
     return this.http.get<educacionInterface[]>(this.url + `show/${id}`)
   }
 
-  addEdu(id: number, edu : educacionInterface): Observable<educacionInterface>{
+  addEdu(id: number, edu : educacionInterface): Observable<educacionInterface[]>{
 
-    return this.http.post<educacionInterface>(this.url + `add/${id}`, edu);
+    return this.http.post<educacionInterface[]>(this.url + `add/${id}`, edu);
   }
 
-  editEdu(id: number, edu :educacionInterface): Observable<educacionInterface>{
+  editEdu(id: number, edu :educacionInterface): Observable<educacionInterface[]>{
 
-    return this.http.put<educacionInterface>(this.url + `edit/${id}`, edu);
+    return this.http.put<educacionInterface[]>(this.url + `edit/${id}`, edu);
   }
 
   deleteEdu(id: number): Observable<educacionInterface>{

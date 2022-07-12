@@ -41,7 +41,7 @@ editData:any = {
   descripcion: ''
 }
 Id : number = Number(localStorage.getItem('id'));
-editar:boolean = (localStorage.getItem('editar') === 'true');
+editar:boolean = (localStorage.getItem('editar') == 'edit');
 educacion: educacionInterface[] = [];
 editId: number = 0;
 
@@ -49,6 +49,7 @@ editId: number = 0;
 
   ngOnInit(): void {
 
+    console.log(this.editar);
     this.EduSer.getEdu(this.Id).subscribe(data => {
       this.educacion = data;
     })
@@ -70,7 +71,9 @@ editId: number = 0;
 
   newEdu(){
 
-    this.EduSer.addEdu(this.Id,this.newEduForm.value).subscribe(data=>{});
+    this.EduSer.addEdu(this.Id,this.newEduForm.value).subscribe(data=>{
+      this.educacion = data;
+    });
    this.newEduModal.hide();
   }
 
@@ -82,7 +85,9 @@ editId: number = 0;
 
   editEdu(){
 
-    this.EduSer.editEdu(this.editId,this.newEduForm.value).subscribe(data=>{});
+    this.EduSer.editEdu(this.editId,this.newEduForm.value).subscribe(data=>{
+      this.educacion = data;
+    });
 
   }
 

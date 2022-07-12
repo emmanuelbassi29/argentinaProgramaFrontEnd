@@ -40,7 +40,7 @@ export class ExperienciaComponent implements OnInit {
   constructor(private fb: FormBuilder, private expS: ExperienciaService) { }
 
   Id : number = Number(localStorage.getItem('id'));
-  editar:boolean = (localStorage.getItem('editar') == 'true');
+  editar:boolean = (localStorage.getItem('editar') == 'edit');
   experiencias : experienciaInterface[] = []
 
 
@@ -56,18 +56,13 @@ export class ExperienciaComponent implements OnInit {
   editId: number = 0;
 
   ngOnInit(): void {
+    console.log(this.Id)
 
 
-
-
-
-     if(this.experiencias.length == 0){
-      timer(1000,500).subscribe(() => {
      this.expS.getExp(this.Id).subscribe((data : experienciaInterface[]) => {
         this.experiencias = data;
       });
-    })
-  }
+
 
     this.newModal = new window.bootstrap.Modal(
       document.getElementById('newModal'));
@@ -87,7 +82,9 @@ export class ExperienciaComponent implements OnInit {
 
   newExperiencia(id : number,exp:experienciaInterface){
 
-    this.expS.addExp(id,exp).subscribe(data => {})
+    this.expS.addExp(id,exp).subscribe(data => {
+      this.experiencias = data;
+    })
   }
 
   newSubmit(){
@@ -119,9 +116,7 @@ export class ExperienciaComponent implements OnInit {
 console.log(this.newForm.value);
 }
 
-   editExperiencia(){
 
-   }
 
    editSubmit(){
 
@@ -129,7 +124,10 @@ console.log(this.newForm.value);
 
   console.log(this.newForm.value);
   console.log(this.editForm.value)
-   this.expS.editExp(this.editId,this.newForm.value).subscribe(data => {})
+   this.expS.editExp(this.editId,this.newForm.value).subscribe(data => {
+    this.experiencias = data;
+
+   })
 
     this.editModal.hide();
 

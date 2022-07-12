@@ -12,6 +12,7 @@ import { ExperienciaComponent } from './experiencia/experiencia.component';
 import { EducacionComponent } from './educacion/educacion.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ProyectosComponent } from './proyectos/proyectos.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ProyectosComponent } from './proyectos/proyectos.component';
     EducacionComponent,
     SkillsComponent,
     ProyectosComponent,
+    MainComponent,
 
   ],
   imports: [
