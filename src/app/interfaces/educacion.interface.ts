@@ -2,7 +2,7 @@ export interface educacionInterface {
 
   imagen: string,
   titulo: string,
-  fechaI: string,
-  fechaF: string,
+  fechaInicio: string,
+  fechaFin: string,
   descripcion: string
 }

@@ -14,8 +14,18 @@ declare var window: any;
 })
 export class AcercaComponent implements OnInit {
 
- acercaDe! : acercaDeInterface;
- usuario!:userInterface;
+ acercaDe : acercaDeInterface = {
+  descripcion: '',
+
+  photo: '',
+  banner: ''
+
+ }
+ usuario: userInterface = {
+  nombre: '',
+  profesion:''
+ }
+
  Id : number = Number(localStorage.getItem('id'));
  editar:boolean = (localStorage.getItem('editar') == 'edit');
  formModal: any;

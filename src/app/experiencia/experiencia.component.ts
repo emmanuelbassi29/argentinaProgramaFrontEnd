@@ -17,7 +17,7 @@ export class ExperienciaComponent implements OnInit {
   editModal:any;
   deleteModal:any;
 
-  newForm = this.fb.group({
+  newExpForm = this.fb.group({
     imagen: [''],
     titulo: [''],
     fechaI: [''],
@@ -25,7 +25,7 @@ export class ExperienciaComponent implements OnInit {
     descripcion: ['']
   })
 
-  editForm = this.fb.group({
+  editExpForm = this.fb.group({
     imagen: [''],
     titulo: [''],
     fechaI: [''],
@@ -33,7 +33,7 @@ export class ExperienciaComponent implements OnInit {
     descripcion: ['']
   })
 
-  deleteForm = this.fb.group({})
+  deleteExpForm = this.fb.group({})
 
 
 
@@ -89,7 +89,7 @@ export class ExperienciaComponent implements OnInit {
 
   newSubmit(){
 
-    this.newExperiencia(this.Id,this.newForm.value);
+    this.newExperiencia(this.Id,this.newExpForm.value);
     this.newModal.hide();
 
 
@@ -103,28 +103,26 @@ export class ExperienciaComponent implements OnInit {
   this.editModal.show();
 
 
-  this.editData = {
+  this.editExpForm.patchValue({
 
     imagen: exp.imagen,
     titulo: exp.titulo,
     fechaI: exp.fechaI,
     fechaF: exp.fechaF,
     descripcion: exp.descripcion
-  };
+  });
 
-  this.newForm.patchValue(exp)
-console.log(this.newForm.value);
+  this.newExpForm.patchValue(exp)
+console.log(this.newExpForm.value);
 }
 
 
 
-   editSubmit(){
+   editSubmit(form : any){
 
-  this.newForm.patchValue(this.editForm.value);
 
-  console.log(this.newForm.value);
-  console.log(this.editForm.value)
-   this.expS.editExp(this.editId,this.newForm.value).subscribe(data => {
+
+   this.expS.editExp(this.editId,form.value).subscribe(data => {
     this.experiencias = data;
 
    })

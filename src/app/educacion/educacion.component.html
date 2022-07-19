@@ -15,7 +15,7 @@
    <h5 class="inline">{{edu.titulo}}</h5>
    <button *ngIf="editar" class="btn-edit inline" type="button" (click)="openEditEdu(edu)"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button>
    <button *ngIf="editar" class="btn-edit inline" type="button" (click)="openDeleteEdu(edu)"><i class="fa-solid fa-circle-xmark"></i></button>
-   <h6>{{edu.fechaI}} - {{edu.fechaF}}</h6>
+   <h6>{{edu.fechaInicio}} - {{edu.fechaFin}}</h6>
    <p>{{edu.descripcion}}</p>
     </div>
   </div>
@@ -65,12 +65,12 @@ aria-hidden="true"
       <label for="floatingInput">Titulo recibido</label>
     </div>
     <div class="form-floating">
-      <input formControlName="fechaI"  type="text" class="form-control" >
+      <input formControlName="fechaInicio"  type="text" class="form-control" >
       <label for="floatingInput">Fecha Inicio</label>
     </div>
     <div class="form-floating">
-      <input formControlName="fechaF"  type="text" class="form-control" >
-      <label for="floatingPassword">Fecha de finalización</label>
+      <input formControlName="fechaFin"  type="text" class="form-control" >
+      <label for="floatingInput">Fecha de finalización</label>
     </div>
     <div class="form-floating">
       <input formControlName="descripcion"  type="text" class="form-control">
@@ -111,25 +111,25 @@ aria-hidden="true"
     ></button>
   </div>
   <div class="modal-body">
-    <form class="form-signin" [formGroup]="editEduForm" (ngSubmit)="editEdu()">
+    <form class="form-signin" [formGroup]="editEduForm" (ngSubmit)="editEdu(editEduForm)">
       <div class="form-floating">
-    <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa" [(value)]="editData.imagen" >
+    <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa"  >
     <label for="floatingInput">Foto de la empresa</label>
   </div>
   <div class="form-floating">
-    <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo" [(value)]="editData.titulo">
+    <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo" >
     <label for="floatingInput">Puesto de trabajo</label>
   </div>
   <div class="form-floating">
-    <input formControlName="fechaI"  type="text" class="form-control" [(value)]="editData.fechaI">
+    <input formControlName="fechaInicio"  type="text" class="form-control" >
     <label for="floatingInput">Fecha Inicio</label>
   </div>
   <div class="form-floating">
-    <input formControlName="fechaF"  type="text" class="form-control" [(value)]="editData.fechaF">
+    <input formControlName="fechaFin"  type="text" class="form-control" >
     <label for="floatingPassword">Fecha de finalización</label>
   </div>
   <div class="form-floating">
-    <input formControlName="descripcion"  type="text" class="form-control" [(value)]="editData.descripcion">
+    <input formControlName="descripcion"  type="text" class="form-control">
     <label for="floatingInput">Tareas realizadas</label>
   </div>
   <div class="modal-footer">

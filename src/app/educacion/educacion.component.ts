@@ -18,45 +18,40 @@ deleteEduModal:any;
 newEduForm = this.fb.group({
   imagen: [''],
   titulo: [''],
-  fechaI: [''],
-  fechaF: [''],
+  fechaInicio: [''],
+  fechaFin: [''],
   descripcion: ['']
 })
 
 editEduForm = this.fb.group({
   imagen: [''],
   titulo: [''],
-  fechaI: [''],
-  fechaF: [''],
+  fechaInicio: [''],
+  fechaFin: [''],
   descripcion: ['']
 })
 
 deleteEduForm = this.fb.group({})
 
-editData:any = {
-  imagen: '',
-  titulo: '',
-  fechaI: '',
-  fechaF: '',
-  descripcion: ''
-}
+editData:any = {};
+
 Id : number = Number(localStorage.getItem('id'));
 editar:boolean = (localStorage.getItem('editar') == 'edit');
 educacion: educacionInterface[] = [];
 editId: number = 0;
 
-  constructor(private fb: FormBuilder, private EduSer : EducacionService) { }
+constructor(private fb: FormBuilder, private EduSer : EducacionService) { }
 
-  ngOnInit(): void {
+ngOnInit(): void {
 
-    console.log(this.editar);
-    this.EduSer.getEdu(this.Id).subscribe(data => {
+  console.log(this.editar);
+  this.EduSer.getEdu(this.Id).subscribe(data => {
       this.educacion = data;
-    })
+  })
 
 
-    this.newEduModal = new window.bootstrap.Modal(
-      document.getElementById('newEduModal'));
+  this.newEduModal = new window.bootstrap.Modal(
+    document.getElementById('newEduModal'));
 
   this.editEduModal = new window.bootstrap.Modal(
     document.getElementById('editEduModal'))
@@ -80,14 +75,26 @@ editId: number = 0;
   openEditEdu(edu : any){
     this.editEduModal.show();
     this.editId = edu.id
+    this.editData = edu;
+    this.editEduForm.patchValue({
+      imagen: edu.imagen,
+      titulo: edu.titulo,
+      fechaInicio: edu.fechaInicio,
+      fechaFin: edu.fechaFin,
+      descripcion: edu.descripcion
+    })
+    console.log(this.editEduForm.value)
+
     console.log(this.editId)
   }
 
-  editEdu(){
+  editEdu(form:any){
 
-    this.EduSer.editEdu(this.editId,this.newEduForm.value).subscribe(data=>{
+    console.log(form.value)
+    this.EduSer.editEdu(this.editId,form.value).subscribe(data=>{
       this.educacion = data;
     });
+    this.editEduModal.hide();
 
   }
 
