@@ -1,7 +1,7 @@
 
 <div class="container-fluid">
 <h3 class="inline">Habilidades</h3>
-<button class="btn-edit-light inline" type="button"  (click)="openskillsNew()"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
+<button  *ngIf="editar" class="btn-edit-light inline" type="button"  (click)="openskillsNew()"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
   <div class="row" >
     <div class="col col-lg-3" *ngFor="let skill of skills ">
       <h4>{{skill.titulo}}</h4>

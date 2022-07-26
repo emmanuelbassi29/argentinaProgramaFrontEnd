@@ -44,7 +44,6 @@ constructor(private fb: FormBuilder, private EduSer : EducacionService) { }
 
 ngOnInit(): void {
 
-  console.log(this.editar);
   this.EduSer.getEdu(this.Id).subscribe(data => {
       this.educacion = data;
   })
@@ -83,14 +82,11 @@ ngOnInit(): void {
       fechaFin: edu.fechaFin,
       descripcion: edu.descripcion
     })
-    console.log(this.editEduForm.value)
 
-    console.log(this.editId)
   }
 
   editEdu(form:any){
 
-    console.log(form.value)
     this.EduSer.editEdu(this.editId,form.value).subscribe(data=>{
       this.educacion = data;
     });

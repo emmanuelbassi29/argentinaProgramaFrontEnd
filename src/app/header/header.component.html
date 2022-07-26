@@ -23,7 +23,7 @@
         </li>
         <a  class="btn" routerLink="/login"
          *ngIf="editar else logIn" (click)="logOut()">LogOut</a>
-        <ng-template #logIn><a class="btn" >LogIn</a></ng-template>
+        <ng-template #logIn><a class="btn" routerLink="/login">LogIn</a></ng-template>
       </ul>
 
   </div>

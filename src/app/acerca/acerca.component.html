@@ -22,7 +22,7 @@
 <div class=" container">
   <div class="row">
     <div class="col col-md-4 col-12 perfil">
-        <h3>{{usuario.nombre}} <button class="btn-edit" type="button" (click)="openFormModal()"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button></h3>
+        <h3>{{usuario.nombre}} <button  *ngIf="editar" class="btn-edit" type="button" (click)="openFormModal()"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button></h3>
         <h5>{{usuario.profesion}}</h5>
 
       </div>

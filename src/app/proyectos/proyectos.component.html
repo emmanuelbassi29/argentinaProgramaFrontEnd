@@ -2,7 +2,7 @@
 
   <div class="container section">
     <h3 class="inline">Proyectos</h3>
- <button class="btn-edit inline" type="button"  (click)="openNewProyecto()"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
+ <button  *ngIf="editar" class="btn-edit inline" type="button"  (click)="openNewProyecto()"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
       <div class="carousel"  >
 
           <input *ngFor="let proyecto of proyectos, let i = index" type="radio" name="slides" checked="checked" id={{i}}>
@@ -188,14 +188,7 @@ aria-hidden="true"
     <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo" >
     <label for="floatingInput">Puesto de trabajo</label>
   </div>
-  <div class="form-floating">
-    <input formControlName="fechaI"  type="text" class="form-control" >
-    <label for="floatingInput">Fecha Inicio</label>
-  </div>
-  <div class="form-floating">
-    <input formControlName="fechaF"  type="text" class="form-control" >
-    <label for="floatingPassword">Fecha de finalización</label>
-  </div>
+
   <div class="form-floating">
     <input formControlName="descripcion"  type="text" class="form-control" >
     <label for="floatingInput">Tareas realizadas</label>

@@ -4,20 +4,35 @@
     <img style="border-radius:3%" class="mb-4" src="assets\images\ovejita.jpg" alt="" width="270" height="257">
     <h1 class="h3 mb-3 fw-normal">Subscribete</h1>
     <div class="form-floating">
-      <input formControlName="nombre" type="text" class="form-control" placeholder="name@example.com">
-      <label for="floatingInput">Nombre</label>
+      <input formControlName="nombre" type="text" class="form-control" >
+      <label for="floatingInput">Nombre y apellido</label>
+      <span  class="error" *ngIf="!registerForm.controls['nombre'].valid && registerForm.controls['nombre'].touched">
+        Debe ingresar su nombre y Apellido
+      </span>
     </div>
-
     <div class="form-floating">
-      <input formControlName="mail"  type="email" class="form-control"  placeholder="name@example.com">
+      <input formControlName="profesion" type="text" class="form-control">
+      <label for="floatingInput">Profesion</label>
+      <span  class="error" *ngIf="!registerForm.controls['profesion'].valid && registerForm.controls['profesion'].touched">
+        Debe ingresar una profesion
+      </span>
+    </div>
+    <div class="form-floating">
+      <input formControlName="mail"  type="email" class="form-control">
       <label for="floatingInput">Mail</label>
+      <span  class="error" *ngIf="!registerForm.controls['mail'].valid && registerForm.controls['mail'].touched">
+        {{getErrorEmail()}}
+      </span>
     </div>
     <div class="form-floating">
-      <input formControlName="password"  type="password" class="form-control"  placeholder="Password">
+      <input formControlName="password"  type="password" class="form-control">
       <label for="floatingPassword">Password</label>
+      <span  class="error" *ngIf="!registerForm.controls['password'].valid && registerForm.controls['password'].touched">
+        {{getErrorPassword()}}
+      </span>
     </div>
     <p><a href="/login" class="login">Ya tenes una cuenta?</a></p>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!registerForm.valid">Subscribirse</button>
 
   </form>
 </div>

@@ -25,6 +25,13 @@ edit!: boolean;
     return this.edit;
   }
 
+  buscarUser(mail : any) : Observable<number>{
+
+
+    return  this.http.get<number>
+      (`http://localhost:8080/buscar/user/${mail.mail}`)
+
+     }
   }
 
 

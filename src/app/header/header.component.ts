@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
 import { socialInterface } from '../interfaces/social.interface';
 import { LogInService } from '../services/log-in.service';
 import { SocialService } from '../services/social.service';
@@ -13,9 +14,10 @@ declare var window: any;
 })
 export class HeaderComponent implements OnInit {
 
-editar:boolean = (localStorage.getItem('editar') == 'edit');
+  editar:boolean = (localStorage.getItem('editar') == 'edit');
 Id : number = Number(localStorage.getItem('id'));
 editId : Number = 0;
+Id2 : any;
 social : socialInterface = {
   id : 0,
   instagram : "",
@@ -32,16 +34,20 @@ socialForm = this.fb.group({
 
 })
 
+edit : string = '';
 
-  constructor(private activated: ActivatedRoute, private log : LogInService
-    , private router: Router,private fb : FormBuilder,private socialService:SocialService){}
+  constructor(private route: ActivatedRoute, private log : LogInService
+  ,private router: Router,private fb : FormBuilder,private socialService:SocialService){}
+
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      console.log(params['edit'])
+    });
 
     if (this.Id > 0){
     this.socialService.showSocial(this.Id).subscribe(data => {
         this.social = data;
-        console.log(this.social)
 
       })
     }
@@ -64,7 +70,6 @@ openSocial(){
     gitHub: this.social.gitHub,
     linkedIn: this.social.linkedIn
   })
-  console.log(this.social)
 
 }
 

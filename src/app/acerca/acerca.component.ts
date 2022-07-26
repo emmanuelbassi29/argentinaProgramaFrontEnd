@@ -16,7 +16,6 @@ export class AcercaComponent implements OnInit {
 
  acercaDe : acercaDeInterface = {
   descripcion: '',
-
   photo: '',
   banner: ''
 

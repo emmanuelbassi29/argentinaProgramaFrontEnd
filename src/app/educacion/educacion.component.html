@@ -46,7 +46,7 @@ aria-hidden="true"
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Datos del puesto</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Datos de la educacion</h5>
       <button
         type="button"
         class="btn-close"
@@ -57,11 +57,11 @@ aria-hidden="true"
     <div class="modal-body">
       <form class="form-signin" [formGroup]="newEduForm" (ngSubmit)="newEdu()">
         <div class="form-floating">
-      <input formControlName="imagen" type="text" class="form-control" placeholder="Foto del instituto" >
-      <label for="floatingInput">Foto del instituto</label>
+      <input formControlName="imagen" type="text" class="form-control" >
+      <label for="floatingInput">Foto de la institucion</label>
     </div>
     <div class="form-floating">
-      <input formControlName="titulo" type="text" class="form-control" placeholder="Titulo recibido">
+      <input formControlName="titulo" type="text" class="form-control" >
       <label for="floatingInput">Titulo recibido</label>
     </div>
     <div class="form-floating">
@@ -78,10 +78,10 @@ aria-hidden="true"
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-        Close
+        Cerrar
       </button>
       <button type="submit" class="btn btn-primary">
-        Save changes
+        Guardar cambios
       </button>
     </div>
   </form>
@@ -102,7 +102,7 @@ aria-hidden="true"
 <div class="modal-dialog">
 <div class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Editar puesto</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Editar educacion</h5>
     <button
       type="button"
       class="btn-close"
@@ -113,12 +113,12 @@ aria-hidden="true"
   <div class="modal-body">
     <form class="form-signin" [formGroup]="editEduForm" (ngSubmit)="editEdu(editEduForm)">
       <div class="form-floating">
-    <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa"  >
-    <label for="floatingInput">Foto de la empresa</label>
+    <input formControlName="imagen" type="text" class="form-control"   >
+    <label for="floatingInput">Foto de la institucion</label>
   </div>
   <div class="form-floating">
-    <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo" >
-    <label for="floatingInput">Puesto de trabajo</label>
+    <input formControlName="titulo" type="text" class="form-control" >
+    <label for="floatingInput">Titulo recibido</label>
   </div>
   <div class="form-floating">
     <input formControlName="fechaInicio"  type="text" class="form-control" >
@@ -134,10 +134,10 @@ aria-hidden="true"
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-      Close
+      Cerrar
     </button>
     <button type="submit" class="btn btn-primary">
-      Save changes
+      Guardar cambios
     </button>
   </div>
 </form>
@@ -159,7 +159,7 @@ aria-hidden="true"
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Datos de Usuario</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Eliminar educacion</h5>
       <button
         type="button"
         class="btn-close"
@@ -170,14 +170,14 @@ aria-hidden="true"
     <div class="modal-body">
       <form class="form-signin" [formGroup]="deleteEduForm" (ngSubmit)="deleteEdu()">
 
-        <p>Estas seguro de borrar este puesto de trabajo</p>
+        <p>Estas seguro de borrar esta formacion de estudio</p>
 
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
         Close
       </button>
       <button type="submit" class="btn btn-primary">
-        Save changes
+         Guardar cambios
       </button>
     </div>
   </form>

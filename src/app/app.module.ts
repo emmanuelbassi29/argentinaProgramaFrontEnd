@@ -13,6 +13,7 @@ import { EducacionComponent } from './educacion/educacion.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { MainComponent } from './main/main.component';
+import { LandingComponent } from './landing/landing.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MainComponent } from './main/main.component';
     SkillsComponent,
     ProyectosComponent,
     MainComponent,
+    LandingComponent,
 
   ],
   imports: [

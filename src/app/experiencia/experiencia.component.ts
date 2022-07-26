@@ -56,7 +56,6 @@ export class ExperienciaComponent implements OnInit {
   editId: number = 0;
 
   ngOnInit(): void {
-    console.log(this.Id)
 
 
      this.expS.getExp(this.Id).subscribe((data : experienciaInterface[]) => {
@@ -113,7 +112,6 @@ export class ExperienciaComponent implements OnInit {
   });
 
   this.newExpForm.patchValue(exp)
-console.log(this.newExpForm.value);
 }
 
 

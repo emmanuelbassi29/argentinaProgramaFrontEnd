@@ -3,14 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { LandingComponent } from './landing/landing.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'holis', pathMatch: 'full' },
+  {path: 'holis', component: LandingComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'holis/:id/:edit', component: MainComponent},
-  {path: 'holis/:id/', component: MainComponent},
+  {path: 'holis/:id', component: MainComponent , pathMatch:'full'},
+  {path: 'holis/:id/:edit', component: MainComponent}
 
 ];
 
