@@ -13,11 +13,12 @@ export class SocialService {
   url: string = 'http://localhost:8080/social/'
   constructor(private http: HttpClient) { }
 
-showSocial(id:number): Observable<socialInterface>{
+  showSocial(id: number): Observable<socialInterface>{
 
-  return this.http.get<socialInterface>(this.url + `show/${id}`)
+    return this.http.get<socialInterface>(this.url +`show/${id}`)
 
-}
+  }
+
 
 editSocial(id:number, social :socialInterface) : Observable<socialInterface>{
 

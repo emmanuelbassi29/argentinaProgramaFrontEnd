@@ -1,7 +1,7 @@
 export interface socialInterface {
-instagram: string,
+id: number,
+  instagram: string,
 gitHub: string,
 linkedIn: string,
-id : number
 
 }
