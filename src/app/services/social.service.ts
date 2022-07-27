@@ -10,7 +10,7 @@ export class SocialService {
 
 
 
-  url: string = 'http://localhost:8080/social/'
+  url: string = 'https://cvcool.herokuapp.com/'
   constructor(private http: HttpClient) { }
 
   showSocial(id: number): Observable<socialInterface>{

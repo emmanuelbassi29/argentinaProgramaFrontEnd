@@ -9,27 +9,24 @@ import { logInInterface } from '../interfaces/logIn.inteface';
 })
 export class LogInService {
 
+url: string = 'https://cvcool.herokuapp.com/'
+
   constructor(private http: HttpClient) { }
-edit!: boolean;
 
 
   getUser(info: logInInterface): Observable<number>{
 
 
-  return  this.http.get<number>
-    (`http://localhost:8080/check/${info.mail}/${info.password}`)
+  return  this.http.get<number>(this.url +`check/${info.mail}/${info.password}`)
 
    }
 
-   getEdit(): boolean {
-    return this.edit;
-  }
+
 
   buscarUser(mail : any) : Observable<number>{
 
 
-    return  this.http.get<number>
-      (`http://localhost:8080/buscar/user/${mail.mail}`)
+    return  this.http.get<number>(this.url +`buscar/user/${mail.mail}`)
 
      }
   }

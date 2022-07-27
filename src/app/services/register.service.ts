@@ -8,7 +8,7 @@ import { userInterface } from '../interfaces/user.interface';
 })
 export class RegisterService {
 
-   url = 'http://localhost:8080/register';
+   url = 'https://cvcool.herokuapp.com/';
 
 
   constructor(private http: HttpClient) { }
