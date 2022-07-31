@@ -8,15 +8,10 @@ import { userInterface } from '../interfaces/user.interface';
 })
 export class RegisterService {
 
-   url = 'https://cvcool.herokuapp.com/';
+   url = 'https://cvcool.herokuapp.com/register';
 
 
   constructor(private http: HttpClient) { }
 
-  addUser(user : object):Observable<object[]> {
 
-   return this.http.post<userInterface[]>(this.url,user);
-
-
-  }
 }

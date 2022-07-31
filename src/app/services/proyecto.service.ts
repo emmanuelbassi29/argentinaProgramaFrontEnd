@@ -8,7 +8,7 @@ import { proyectoInterface } from '../interfaces/proyecto.interface';
 })
 export class ProyectoService {
 
-  url = 'http://localhost:8080/proyecto/';
+  url = 'https://cvcool.herokuapp.com/proyecto/';
 
   constructor(private http: HttpClient) { }
 

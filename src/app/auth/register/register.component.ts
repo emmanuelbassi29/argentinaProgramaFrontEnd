@@ -2,8 +2,8 @@ import { userInterface } from './../../interfaces/user.interface';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RegisterService } from 'src/app/services/register.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user..service';
 
 
 @Component({
@@ -39,7 +39,7 @@ getErrorEmail() {
 }
 
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private service : RegisterService,private router: Router) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private userService : UserService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -51,7 +51,7 @@ onSubmit(): void {
 
 newUSer(user: Object): void {
 
-  this.service.addUser(user).subscribe(data => {
+  this.userService.addUser(user).subscribe(data => {
     console.log(data)
     this.router.navigate(['/login']);
   })

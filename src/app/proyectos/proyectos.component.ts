@@ -14,8 +14,8 @@ export class ProyectosComponent implements OnInit {
   editProyectoModal:any;
   deleteProyectoModal:any;
 
-  Id : number = Number(localStorage.getItem('id'));
-  editar:boolean = (localStorage.getItem('editar') == 'edit');
+  Id : number = Number(sessionStorage.getItem('id'));
+  editar:boolean = (sessionStorage.getItem('editar') == 'edit');
   proyectos: any[] = [];
   editId: number = 0;
 

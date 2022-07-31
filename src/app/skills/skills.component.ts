@@ -15,8 +15,8 @@ export class SkillsComponent implements OnInit {
   newSkillModal:any;
   deleteSkillModal:any;
 
-  Id : number = Number(localStorage.getItem('id'));
-  editar:boolean = (localStorage.getItem('editar') == 'edit');
+  Id : number = Number(sessionStorage.getItem('id'));
+  editar:boolean = (sessionStorage.getItem('editar') == 'edit');
   skills: any[] = [];
   editId: number = 0;
 

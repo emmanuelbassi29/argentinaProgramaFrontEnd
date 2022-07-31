@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LogInService } from '../services/log-in.service';
+import { UserService } from '../services/user..service';
 
 @Component({
   selector: 'app-landing',
@@ -21,7 +21,7 @@ export class LandingComponent implements OnInit {
 
     error : boolean = false;
 
-  constructor(private fb: FormBuilder, private log : LogInService, private router: Router) { }
+  constructor(private fb: FormBuilder, private userService : UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -32,14 +32,12 @@ export class LandingComponent implements OnInit {
   }
 
   buscarUser(): void {
-console.log(this.buscarForm.value)
-    this.log.buscarUser(this.buscarForm.value).subscribe(id => {
+      this.userService.buscarUser(this.buscarForm.value).subscribe(id => {
 
       if (id != 0){
       this.Id = id;
-      localStorage.setItem("id",this.Id.toString())
+      sessionStorage.setItem("id",this.Id.toString())
       this.router.navigate(['/holis/' + id]);
-
     }
       else {
         this.error = true;

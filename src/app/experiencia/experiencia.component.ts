@@ -33,14 +33,10 @@ export class ExperienciaComponent implements OnInit {
     descripcion: ['']
   })
 
-  deleteExpForm = this.fb.group({})
-
-
-
   constructor(private fb: FormBuilder, private expS: ExperienciaService) { }
 
-  Id : number = Number(localStorage.getItem('id'));
-  editar:boolean = (localStorage.getItem('editar') == 'edit');
+  Id : number = Number(sessionStorage.getItem('id'));
+  editar:boolean = (sessionStorage.getItem('editar') == 'edit');
   experiencias : experienciaInterface[] = []
 
 
@@ -110,15 +106,9 @@ export class ExperienciaComponent implements OnInit {
     fechaF: exp.fechaF,
     descripcion: exp.descripcion
   });
-
-  this.newExpForm.patchValue(exp)
 }
 
-
-
    editSubmit(form : any){
-
-
 
    this.expS.editExp(this.editId,form.value).subscribe(data => {
     this.experiencias = data;

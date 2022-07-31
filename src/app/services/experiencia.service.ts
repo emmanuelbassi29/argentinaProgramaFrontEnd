@@ -9,7 +9,7 @@ import { experienciaInterface } from '../interfaces/experiencia.interface';
 export class ExperienciaService {
 
 
-  url: string = 'http://localhost:8080/experiencia/'
+  url: string = 'https://cvcool.herokuapp.com/experiencia/'
 
   constructor(private http: HttpClient) { }
 

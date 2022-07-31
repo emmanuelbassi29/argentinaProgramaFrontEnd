@@ -14,6 +14,10 @@ import { SkillsComponent } from './skills/skills.component';
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { MainComponent } from './main/main.component';
 import { LandingComponent } from './landing/landing.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -27,6 +31,7 @@ import { LandingComponent } from './landing/landing.component';
     ProyectosComponent,
     MainComponent,
     LandingComponent,
+    NotFoundComponent,
 
   ],
   imports: [
@@ -35,6 +40,8 @@ import { LandingComponent } from './landing/landing.component';
     AuthModule,
     ReactiveFormsModule,
     HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,7 +8,7 @@ import { educacionInterface } from '../interfaces/educacion.interface';
 })
 export class EducacionService {
 
-  url = 'http://localhost:8080/educacion/'
+  url = 'https://cvcool.herokuapp.com/educacion/'
   constructor(private http: HttpClient) { }
 
   getEdu(id: number): Observable<educacionInterface[]>{

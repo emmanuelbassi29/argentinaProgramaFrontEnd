@@ -1,7 +1,6 @@
-import { logInInterface } from './../../interfaces/logIn.inteface';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
-import { LogInService } from 'src/app/services/log-in.service';
+import { UserService } from 'src/app/services/user..service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,11 +19,11 @@ mailPattern: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".
   })
 
   Id : number = 0;
-  edit: string = "";
-
+  edit: boolean = false;
+  editar : string = "";
 
   error : boolean = false;
-  constructor(private fb: FormBuilder, private log : LogInService, private router: Router) { }
+  constructor(private fb: FormBuilder, private userService : UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -48,13 +47,14 @@ mailPattern: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-    this.log.getUser(this.loginForm.value).subscribe(id => {
+    this.userService.getUser(this.loginForm.value).subscribe(id => {
 
       if (id != 0){
       this.Id = id;
-      this.edit = "edit"
-      localStorage.setItem("id",this.Id.toString())
-      localStorage.setItem("editar",this.edit)
+      this.edit = true;
+      this.editar = 'edit';
+      sessionStorage.setItem("id",this.Id.toString())
+      sessionStorage.setItem("editar",this.editar)
       this.router.navigate(['/holis/',id,this.edit]);
 
     }

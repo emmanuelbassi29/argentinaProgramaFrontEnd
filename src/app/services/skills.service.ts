@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class SkillsService {
 
-url : string = 'http://localhost:8080/skill/';
+url : string = 'https://cvcool.herokuapp.com/skill/';
 
   constructor(private http: HttpClient) { }
 

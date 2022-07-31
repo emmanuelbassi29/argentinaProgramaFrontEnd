@@ -19,19 +19,6 @@
    <p>{{edu.descripcion}}</p>
     </div>
   </div>
-  <div class="row">
-
-    <div class="col col-md-2">
-   <img class="estudio" src="assets\images\santander-group.jpg" alt="">
-    </div>
-   <div class="col col-md-10">
-   <h5>Representate de atencion al publico</h5>
-   <p>Estuve cubriendo una licencia de maternidad, mi rol principal era
-    ayudar a las personas a cumplir sus objetivos financieros en base
-    a sus recursos. Así También como atraer nuevos clientes y
-    mejorar la experiencia de los clientes con el banco.  </p>
-    </div>
-  </div>
   </div>
 
 
@@ -168,15 +155,15 @@ aria-hidden="true"
       ></button>
     </div>
     <div class="modal-body">
-      <form class="form-signin" [formGroup]="deleteEduForm" (ngSubmit)="deleteEdu()">
+      <form class="form-signin">
 
         <p>Estas seguro de borrar esta formacion de estudio</p>
 
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-        Close
+        Cerrar
       </button>
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" (ngSubmit)="deleteEdu()" class="btn btn-primary">
          Guardar cambios
       </button>
     </div>

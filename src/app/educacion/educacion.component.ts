@@ -31,12 +31,11 @@ editEduForm = this.fb.group({
   descripcion: ['']
 })
 
-deleteEduForm = this.fb.group({})
 
 editData:any = {};
 
-Id : number = Number(localStorage.getItem('id'));
-editar:boolean = (localStorage.getItem('editar') == 'edit');
+Id : number = Number(sessionStorage.getItem('id'));
+editar:boolean = (sessionStorage.getItem('editar') == 'edit');
 educacion: educacionInterface[] = [];
 editId: number = 0;
 

@@ -2,8 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { socialInterface } from '../interfaces/social.interface';
-import { LogInService } from '../services/log-in.service';
+import { UserService } from '../services/user..service';
 import { SocialService } from '../services/social.service';
+declare var window: any;
 
 @Component({
   selector: 'app-header',
@@ -34,25 +35,24 @@ socialForm = this.fb.group({
 
 edit : string = '';
 
-  constructor(private route: ActivatedRoute, private log : LogInService
+  constructor(private route: ActivatedRoute, private userService : UserService
   ,private router: Router,private fb : FormBuilder,private socialService:SocialService){}
 
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      console.log(params['edit'])
-    });
 
-    if (this.Id > 0){
     this.socialService.showSocial(this.Id).subscribe(data => {
         this.social = data;
-
-
     })
-}
+
+
+  this.socialModal = new window.bootstrap.Modal(
+  document.getElementById('socialModal'));
   }
+
+
 logOut(): void {
-  localStorage.clear();
+  sessionStorage.clear();
   this.editar = false;
   this.router.navigate(['/login']);
 
@@ -67,4 +67,12 @@ openSocial(){
   })
 
 }
+
+editSocialSubmit(form : any) {
+
+      this.socialService.editSocial(this.social.id,form.value).subscribe(data => {
+        this.social = data;
+      })
+      this.socialModal.hide();
+    }
 }

@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { acercaDeInterface } from '../interfaces/acercaDe.interface';
 import { userInterface } from '../interfaces/user.interface';
 import { AcercaService } from '../services/acerca.service';
@@ -25,8 +25,8 @@ export class AcercaComponent implements OnInit {
   profesion:''
  }
 
- Id : number = Number(localStorage.getItem('id'));
- editar:boolean = (localStorage.getItem('editar') == 'edit');
+ Id : number = Number(sessionStorage.getItem('id'));
+ editar:boolean = (sessionStorage.getItem('editar') == 'edit');
  formModal: any;
  acercaDeModal:any;
 
@@ -69,27 +69,38 @@ export class AcercaComponent implements OnInit {
 }
 
 
-
-
   // MODAL FUNCTIONS
 
   // Perfil Modal
   openAcercaDeModal(){
     this.acercaDeModal.show();
+
+    this.acercaDeForm.patchValue({
+    banner: this.acercaDe.banner,
+    photo: this.acercaDe.photo,
+    descripcion: this.acercaDe.descripcion
+    })
 }
-saveAcercaDe(id: number, acerca: acercaDeInterface){
+saveAcercaDe(id: number, acerca: any){
   this.acercaS.editarAcercaDe(this.Id,acerca).subscribe(data => {
     this.acercaDe = data;
 })
 }
 
-acercaDeSubmit(){
-this.saveAcercaDe(this.Id,this.acercaDeForm.value)
+acercaDeSubmit(form : any){
+this.saveAcercaDe(this.Id,form.value)
 this.acercaDeModal.hide();
 
 }
   // Usuario modal
 openFormModal() {
+  this.editForm.patchValue({
+    nombre: this.usuario.nombre,
+    profesion: this.usuario.profesion,
+    mail: this.usuario.mail,
+    password: this.usuario.password
+
+  })
   this.formModal.show();
 }
 saveUser(id: number,user : userInterface) {
@@ -98,8 +109,8 @@ this.acercaS.editarUser(this.Id,user).subscribe(data => {
 })
 }
 
-onSubmit() {
- this.saveUser(this.Id,this.editForm.value);
+onSubmit(form : any) {
+ this.saveUser(this.Id,form.value);
   this.formModal.hide();
 }
 
