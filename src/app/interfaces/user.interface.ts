@@ -1,6 +1,4 @@
 export interface userInterface {
-
-
   id?: number
   nombre: string
   profesion:string

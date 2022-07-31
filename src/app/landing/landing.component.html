@@ -6,10 +6,10 @@
     <div class="form-floating">
       <input formControlName="mail" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Mail</label>
-      <p *ngIf="error">El mail ingresado es incorrecto o no existe.</p>
+      <p *ngIf="error" class="error">El mail ingresado es incorrecto o no pertenece a un usuario activo.</p>
       <span  class="error" *ngIf="!buscarForm.controls['mail'].valid && buscarForm.controls['mail'].touched">
         {{getErrorEmail()}}
-              </span>
+      </span>
     </div>
     <p><a href="/register" class="register">No tenes una cuenta?</a></p>
 

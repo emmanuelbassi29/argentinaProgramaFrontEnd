@@ -1,19 +1,14 @@
-
-
   <div class="container section">
     <h3 class="inline">Proyectos</h3>
  <button  *ngIf="editar" class="btn-edit inline" type="button"  (click)="openNewProyecto()"><i class="fa-solid fa-circle-plus fa-xl"></i></button>
       <div class="carousel"  >
 
           <input *ngFor="let proyecto of proyectos, let i = index" type="radio" name="slides" checked="checked" id={{i}}>
-
-
           <ul class="carousel__slides">
               <li class="carousel__slide" *ngFor="let proyecto of proyectos" >
                   <figure>
                       <div>
                           <img src={{proyecto.imagen}} alt="">
-
                       </div>
                       <button *ngIf="editar" class="btn-edit inline" type="button" (click)="openEditProyecto(proyecto)"><i  class="fa-solid fa-pen-to-square fa-xl"></i></button>                       <button *ngIf="editar" class="btn-edit inline" type="button" (click)="openDeleteProyecto(proyecto)"><i class="fa-solid fa-circle-xmark"></i></button>
                       <figcaption>
@@ -22,8 +17,6 @@
                       </figcaption>
                   </figure>
               </li>
-
-
           </ul>
           <ul class="carousel__thumbnails" >
               <li *ngFor="let proyecto of proyectos, let i = index">
@@ -70,10 +63,10 @@ aria-hidden="true"
 
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-        Close
+        Cerrar
       </button>
       <button type="submit" class="btn btn-primary">
-        Save changes
+        Guardar cambios
       </button>
     </div>
   </form>
@@ -106,11 +99,11 @@ aria-hidden="true"
     <form class="form-signin" [formGroup]="newProyectoForm" (ngSubmit)="editProyecto()">
       <div class="form-floating">
     <input formControlName="imagen" type="text" class="form-control" placeholder="Foto de la empresa" >
-    <label for="floatingInput">Foto de la empresa</label>
+    <label for="floatingInput">Fotos del Proyecto</label>
   </div>
   <div class="form-floating">
     <input formControlName="titulo" type="text" class="form-control" placeholder="Puesto de trabajo" >
-    <label for="floatingInput">Puesto de trabajo</label>
+    <label for="floatingInput">Titulo del Proyecto</label>
   </div>
 
   <div class="form-floating">
@@ -119,10 +112,10 @@ aria-hidden="true"
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-      Close
+      Cerrar
     </button>
     <button type="submit" class="btn btn-primary">
-      Save changes
+      Guardar cambios
     </button>
   </div>
 </form>
@@ -153,16 +146,16 @@ aria-hidden="true"
       ></button>
     </div>
     <div class="modal-body">
-      <form class="form-signin" [formGroup]="newProyectoForm" (ngSubmit)="deleteProyecto()">
+      <form class="form-signin" >
 
-        <p>Estas seguro de borrar este puesto de trabajo</p>
+        <p>Estas seguro de borrar este proyecto</p>
 
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-        Close
+        Cerrar
       </button>
-      <button type="submit" class="btn btn-primary">
-        Save changes
+      <button type="submit" (ngSubmit)="deleteProyecto()" class="btn btn-primary">
+        Guardar cambios
       </button>
     </div>
   </form>

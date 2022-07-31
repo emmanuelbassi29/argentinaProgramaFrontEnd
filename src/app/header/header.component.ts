@@ -13,8 +13,8 @@ declare var window: any;
 })
 export class HeaderComponent implements OnInit {
 
-  editar:boolean = (localStorage.getItem('editar') == 'edit');
-Id : number = Number(localStorage.getItem('id'));
+editar:boolean = (sessionStorage.getItem('editar') == 'edit');
+Id : number = Number(sessionStorage.getItem('id'));
 editId : Number = 0;
 Id2 : any;
 social : socialInterface = {
@@ -30,10 +30,7 @@ socialForm = this.fb.group({
   instagram: [''],
   gitHub: [''],
   linkedIn: ['']
-
 })
-
-edit : string = '';
 
   constructor(private route: ActivatedRoute, private userService : UserService
   ,private router: Router,private fb : FormBuilder,private socialService:SocialService){}
