@@ -62,6 +62,8 @@ this.newSkillModal.hide();
 
   deleteSkillSubmit(){
     this.skillService.deleteSkill(this.editId).subscribe(data => {})
+    this.skills = this.skills.filter(skill =>skill.id !== this.editId)
+
     this.deleteSkillModal.hide();
   }
 

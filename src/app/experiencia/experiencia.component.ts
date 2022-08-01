@@ -86,8 +86,6 @@ export class ExperienciaComponent implements OnInit {
 
     this.newExperiencia(this.Id,this.newExpForm.value);
     this.newModal.hide();
-
-
   }
 
    //Editar experiencia
@@ -131,6 +129,7 @@ export class ExperienciaComponent implements OnInit {
   deleteSubmit(){
 
     this.expS.deleteExp(this.editId).subscribe(data => {})
+    this.experiencias = this.experiencias.filter(experiencias => experiencias.id !== this.editId)
     this.deleteModal.hide();
   }
 

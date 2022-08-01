@@ -36,7 +36,7 @@ editData:any = {};
 
 Id : number = Number(sessionStorage.getItem('id'));
 editar:boolean = (sessionStorage.getItem('editar') == 'edit');
-educacion: educacionInterface[] = [];
+educacion: any[] = [];
 editId: number = 0;
 
 constructor(private fb: FormBuilder, private EduSer : EducacionService) { }
@@ -95,11 +95,14 @@ ngOnInit(): void {
 
   openDeleteEdu(edu : any){
     this.editId = edu.id;
+    console.log(this.editId)
+
     this.deleteEduModal.show();
   }
 
   deleteEdu(){
     this.EduSer.deleteEdu(this.editId).subscribe(data=>{})
+    this.educacion = this.educacion.filter(educacion =>educacion.id !== this.editId)
     this.deleteEduModal.hide();
   }
 }

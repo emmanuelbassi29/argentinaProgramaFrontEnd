@@ -8,7 +8,7 @@
 
 
 <div class="pie animate" [style.--p]="skill.nivel">{{skill.nivel}}%</div>
-<button  class="btn-edit-light" type="button" (click)="openSkillsDelete(skill)">
+<button *ngIf="editar"  class="btn-edit-light" type="button" (click)="openSkillsDelete(skill)">
   <i class="fa-solid fa-circle-xmark"></i></button>
 </div>
 </div>
@@ -87,10 +87,10 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >
-          Close
+          Cerrar
         </button>
         <button type="submit" class="btn btn-primary" (click)="deleteSkillSubmit()">
-          Save changes
+          Guardar cambios
         </button>
       </div>
 

@@ -14,7 +14,7 @@ export class LandingComponent implements OnInit {
 
 
   buscarForm  = this.fb.group({
-    mail:['',{validators : [Validators.email,Validators.required,Validators.pattern(this.mailPattern)],updateOn:"blur"},],
+    mail:['',{validators : [Validators.email,Validators.required,Validators.pattern(this.mailPattern)]},],
     })
     Id : number = 0;
 
@@ -37,6 +37,8 @@ export class LandingComponent implements OnInit {
       if (id != 0){
       this.Id = id;
       sessionStorage.setItem("id",this.Id.toString())
+      sessionStorage.setItem("editar","false")
+
       this.router.navigate(['/holis/' + id]);
     }
       else {

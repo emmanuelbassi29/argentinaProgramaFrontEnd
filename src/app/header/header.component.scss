@@ -19,13 +19,14 @@
 
 
 .icon-list {
+  margin-left: 49%;
 	width: 100%;
-	max-width: 50rem;
-	padding: 0 1.5rem;
+	max-width: 330px;
 	display: flex;
 	justify-content: space-between;
 }
 .icon-item {
+  display: inline;
 	list-style: none;
 	&:nth-child(1) {
 		a {
@@ -103,10 +104,23 @@ width: 91px;
 }
 
 .edit-btn {
+  border:none;
   background-color: #1B2430;
   color: #76BA99;
 }
 .btn:hover {
   font-weight: bold;
 color:#FFEF82
+}
+.btn-toogle {
+  color:  #F6E3C5;
+
+}
+.edit-icon{
+  margin-top:10%;
+}
+.brand {
+  color: #FFEF82;
+  font-size:2rem;
+  font-family: 'Kaushan Script', cursive;
 }

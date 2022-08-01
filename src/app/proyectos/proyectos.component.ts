@@ -66,6 +66,8 @@ export class ProyectosComponent implements OnInit {
 
     this.proService.editProyecto(this.editId,this.newProyectoForm.value).subscribe(data=>{
       this.proyectos = data;
+      this.editProyectoModal.hide();
+
     });
 
   }
@@ -77,6 +79,7 @@ export class ProyectosComponent implements OnInit {
 
   deleteProyecto(){
     this.proService.deleteProyecto(this.editId).subscribe(data=>{})
+    this.proyectos = this.proyectos.filter(proyectos => proyectos.id !== this.editId)
     this.deleteProyectoModal.hide();
   }
 }

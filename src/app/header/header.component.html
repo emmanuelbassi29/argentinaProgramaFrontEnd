@@ -1,31 +1,35 @@
 
-<nav class="navbar  bar">
+<nav class="navbar  navbar-expand-lg bar">
   <div class="container-fluid">
-    <div>
     <a class="navbar-brand bar" href="#">#YoProgramo
       <img src="assets\images\APLogo-20-20.png" alt="Argentina programa" width="114" height="70">
     </a>
-  </div>
-  <div class="root">
-
-      <ul class="icon-list">
-
-        <li class="icon-item">
-          <button *ngIf="editar" type="button" class="edit-btn" (click)="openSocial()"><i class="fa-solid fa-pen-to-square fa-xl"></i></button>
+    <div style="padding-left:33%">
+      <a class="navbar-brand brand" href="#">CvCool</a>
+    </div>
+    <button class="navbar-toggler btn-toogle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i> </button>
+    <div class="collapse navbar-collapse root" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto icon-list">
+        <li class="nav-item icon-item">
+        <button *ngIf="editar" type="button" class="edit-btn" (click)="openSocial()"><i style="padding-top:25px"
+           class="fa-solid fa-pen-to-square fa-xl"></i></button>
+        </li>
+        <li class="nav-item icon-item">
           <a href={{social.instagram}} class="icon-link"><i class="fab fa-instagram"></i></a>
         </li>
-        <li class="icon-item">
+        <li class="nav-item icon-item">
           <a href={{social.gitHub}} class="icon-link"><i class="fa-brands fa-github"></i></a>
         </li>
-        <li class="icon-item">
+        <li class="nav-item icon-item">
           <a href={{social.linkedIn}} class="icon-link"><i class="fab fa-linkedin-in"></i></a>
         </li>
-
+        <li class="nav-item icon-item">
         <a  class="btn" routerLink="/login"
          *ngIf="editar else logIn" (click)="logOut()">LogOut</a>
         <ng-template #logIn><a class="btn" routerLink="/login">LogIn</a></ng-template>
+      </li>
       </ul>
-
   </div>
   </div>
 </nav>

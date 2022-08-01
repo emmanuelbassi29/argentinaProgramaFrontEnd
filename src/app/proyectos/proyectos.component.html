@@ -146,7 +146,6 @@ aria-hidden="true"
       ></button>
     </div>
     <div class="modal-body">
-      <form class="form-signin" >
 
         <p>Estas seguro de borrar este proyecto</p>
 
@@ -154,11 +153,10 @@ aria-hidden="true"
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
         Cerrar
       </button>
-      <button type="submit" (ngSubmit)="deleteProyecto()" class="btn btn-primary">
+      <button type="submit" (click)="deleteProyecto()" class="btn btn-primary">
         Guardar cambios
       </button>
     </div>
-  </form>
 
   </div>
   </div>
